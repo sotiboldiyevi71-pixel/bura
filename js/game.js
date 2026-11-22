@@ -36,7 +36,8 @@
       multiplier: 1,
       target: opts.target || DEFAULT_TARGET,
       rng: opts.rng,
-      dealer: 0,
+      // Birinchi raundda 0-o'rindagi (odam) hujumchi bo'lishi uchun
+      dealer: opts.dealer !== undefined ? opts.dealer : mode === '1v1' ? 1 : 3,
       roundNo: 0,
       over: false,
       loserTeam: null,

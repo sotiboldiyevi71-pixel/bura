@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d3320">
+  <title>Bura</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="menu" class="screen">
+  <h1 class="logo">BURA</h1>
+  <div class="panel">
+    <div class="langs">
+      <button class="lang" data-lang="uz">O'zbekcha</button>
+      <button class="lang" data-lang="ru">Русский</button>
+    </div>
+    <label for="nick" data-i18n="nick"></label>
+    <input id="nick" maxlength="14" autocomplete="off" data-i18n-ph="nickPlaceholder">
+    <div class="modes">
+      <button class="mode" data-mode="1v1" data-i18n="m1v1"></button>
+      <button class="mode" data-mode="2v2" data-i18n="m2v2"></button>
+      <button class="mode" data-mode="ffa" data-i18n="mffa"></button>
+      <button class="mode" id="onlineBtn" disabled data-i18n="online"></button>
+    </div>
+  </div>
+</div>
+
+<div id="game" class="screen hidden">
+  <div id="hud">
+    <button id="menuBtn" aria-label="menu">☰</button>
+    <span id="hudRound"></span>
+    <span id="hudTrump"></span>
+    <span id="hudScore"></span>
+  </div>
+  <div id="table">
+    <div class="seat seat-top" id="seat-top"></div>
+    <div class="seat seat-left" id="seat-left"></div>
+    <div class="seat seat-right" id="seat-right"></div>
+    <div id="deck"></div>
+    <div id="trick"></div>
+  </div>
+  <div id="me">
+    <div id="status"></div>
+    <div id="hand"></div>
+    <div id="actions">
+      <button id="buraBtn" class="act gold hidden" data-i18n="bura"></button>
+      <button id="moskvaBtn" class="act gold hidden" data-i18n="moskva"></button>
+      <button id="playBtn" class="act main" data-i18n="play"></button>
+    </div>
+  </div>
+</div>
+
+<div id="modal" class="modal hidden"><div class="modal-box" id="modalBox"></div></div>
+<div id="toast" class="toast hidden"></div>
+
+<script src="js/cards.js"></script>
+<script src="js/rules.js"></script>
+<script src="js/game.js"></script>
+<script src="js/bot.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
