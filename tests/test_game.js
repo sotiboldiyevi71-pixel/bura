@@ -135,4 +135,22 @@ for (const mode of ['1v1', '2v2', 'ffa']) {
   assert.deepStrictEqual(res.penalties, [0, 4]);
 }
 
+// Kechiktirilgan to'ldirish (animatsiya uchun): yurishdan keyin qo'llar to'lmaydi, Game.refill chaqirilgach to'ladi
+{
+  const g = Game.createGame('1v1', { deferRefill: true });
+  const r = g.round;
+  const att = r.attacker;
+  const def = 1 - att;
+  Game.playLead(g, att, [r.hands[att][0].id]);
+  const ev = Game.playResponse(g, def, [r.hands[def][0].id]);
+  assert.strictEqual(ev.type, 'trick');
+  assert.strictEqual(r.hands[0].length, 3);
+  assert.strictEqual(r.hands[1].length, 3);
+  assert.strictEqual(r.stock.length, 28); // 36 - 8 (taqsimlashdan keyin), hali to'ldirilmagan
+  Game.refill(g);
+  assert.strictEqual(r.hands[0].length, 4);
+  assert.strictEqual(r.hands[1].length, 4);
+  assert.strictEqual(r.stock.length, 26);
+}
+
 console.log('Hamma o\'yin testlari o\'tdi');
